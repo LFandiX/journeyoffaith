@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Journey of Faith — Kisah-Kisah yang Mengubah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ══ MOBILE-FIRST ══ */
+    :root{
+      --dark:#0c0905;--stone:#1a1208;--earth:#2e2415;--ash:#4a3f2e;
+      --gold:#c9a84c;--gold-l:#e8c96d;--gold-dim:#7a6230;
+      --cream:#f0e8d0;--cream-d:#b5a98a;--text:#ede0c4;--text-dim:#8a7d65;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{background:var(--dark);color:var(--text);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
+    nav.scrolled{background:rgba(12,9,5,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.1)}
+    .nav-logo{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.15em;color:var(--gold);text-decoration:none}
+    .nav-links{display:none;gap:2.5rem;list-style:none} /* hidden on mobile */
+    .nav-links a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.22em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--gold)}
+
+    /* ── HERO ── */
+    .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 1.2rem}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(201,168,76,.07) 0%,transparent 70%),linear-gradient(180deg,#0e0b05 0%,#1a1208 50%,#0f0d06 100%)}
+    .hero-rays{position:absolute;inset:0;background:conic-gradient(from 270deg at 50% -20%,transparent 0deg,rgba(201,168,76,.025) 10deg,transparent 20deg,rgba(201,168,76,.015) 30deg,transparent 40deg)}
+    .cross-icon{position:relative;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1.2s ease forwards .3s}
+    .cross-icon svg{width:38px;height:38px;fill:none;stroke:var(--gold);stroke-width:1.5;opacity:.6}
+    .hero-eyebrow{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp 1s ease forwards .5s;text-align:center}
+    /* decorative dashes only on wider screens */
+    .hero-eyebrow::before,.hero-eyebrow::after{display:none}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:300;line-height:1.06;text-align:center;color:var(--cream);opacity:0;animation:fadeUp 1.2s ease forwards .7s}
+    .hero-title em{font-style:italic;color:var(--gold-l)}
+    .hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--cream-d);text-align:center;max-width:520px;line-height:1.9;margin-top:1.2rem;opacity:0;animation:fadeUp 1s ease forwards 1s}
+    .audience-tag{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.5rem 1rem;border:1px solid rgba(201,168,76,.22);font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:var(--text-dim);opacity:0;animation:fadeUp 1s ease forwards 1.2s;text-align:center}
+    .audience-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.6;flex-shrink:0}
+    .hero-cta{margin-top:2rem;opacity:0;animation:fadeUp 1s ease forwards 1.4s}
+    .cta-btn{display:inline-flex;align-items:center;gap:.8rem;padding:1rem 2rem;border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:all .4s;position:relative;overflow:hidden;min-height:52px}
+    .cta-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+    .cta-btn:hover::before,.cta-btn:active::before{transform:scaleX(1)}
+    .cta-btn:hover,.cta-btn:active{color:var(--dark)}
+    .cta-btn span{position:relative;z-index:1}
+    .hero-divider{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold-dim),transparent);margin:2rem auto 0;opacity:0;animation:fadeUp 1s ease forwards 1.6s}
+    .scroll-hint{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.2em;color:var(--gold-dim);margin-top:.7rem;opacity:0;animation:fadeUp 1s ease forwards 1.8s}
+
+    /* ── INTRO ── */
+    .intro{max-width:680px;margin:0 auto;padding:5rem 1.2rem;text-align:center}
+    .section-label{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:all .8s ease}
+    .section-label.visible{opacity:1;transform:translateY(0)}
+    .intro-text{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;line-height:1.9;color:var(--cream-d);opacity:0;transform:translateY(30px);transition:all 1s ease .2s}
+    .intro-text.visible{opacity:1;transform:translateY(0)}
+    .intro-text strong{color:var(--gold-l);font-weight:400}
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works{max-width:900px;margin:0 auto;padding:0 1.2rem 5rem;text-align:center}
+    .how-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:2.5rem;opacity:0;transform:translateY(30px);transition:all .9s ease}
+    .how-grid.visible{opacity:1;transform:translateY(0)}
+    .how-item{padding:2rem 1.5rem;border:1px solid var(--ash)}
+    .how-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold-dim);line-height:1;margin-bottom:.8rem}
+    .how-title{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.18em;color:var(--gold);margin-bottom:.7rem}
+    .how-desc{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-dim);line-height:1.75}
+
+    /* ── MODULES ── */
+    .modules-section{padding:3rem 1.2rem 6rem;max-width:1100px;margin:0 auto}
+    .modules-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);transition:all .8s ease}
+    .modules-header.visible{opacity:1;transform:translateY(0)}
+    .modules-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--cream);flex-shrink:0}
+    .modules-line{height:1px;flex:1;background:linear-gradient(to right,var(--ash),transparent)}
+    .modules-grid{display:grid;grid-template-columns:1fr;gap:1.5px}
+
+    .module-card{position:relative;padding:2rem 1.5rem;background:var(--dark);border:1px solid var(--ash);cursor:pointer;overflow:hidden;text-decoration:none;display:block;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .4s ease}
+    .module-card.visible{opacity:1;transform:translateY(0)}
+    .module-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+    .module-card:active::before{opacity:1}
+    .module-card:active{background:var(--stone)}
+    .module-card.active-module{border-color:rgba(201,168,76,.3)}
+    .module-card.active-module::after{content:'Tersedia';position:absolute;top:1.2rem;right:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);border:1px solid var(--gold-dim);padding:.25rem .6rem}
+    .module-card.locked{opacity:.32!important;cursor:not-allowed;pointer-events:none}
+
+    .card-number{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold-dim);margin-bottom:1rem}
+    .card-tag{display:inline-block;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);border:1px solid var(--gold-dim);padding:.25rem .65rem;margin-bottom:1.2rem}
+    .card-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--cream);line-height:1.3;margin-bottom:.5rem}
+    .card-theme{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:var(--gold-l);margin-bottom:1rem}
+    .card-desc{font-size:.9rem;color:var(--text-dim);line-height:1.75;margin-bottom:1.8rem}
+    .card-meta{display:flex;align-items:center;justify-content:space-between}
+    .card-time{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.1em;color:var(--text-dim)}
+    .card-arrow{width:34px;height:34px;border:1px solid var(--gold-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);transition:all .3s;flex-shrink:0}
+    .module-card:hover .card-arrow,.module-card:active .card-arrow{background:var(--gold);color:var(--dark)}
+    .locked-badge{position:absolute;top:1.2rem;right:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;color:var(--text-dim);border:1px solid var(--ash);padding:.25rem .6rem}
+
+    /* ── FOOTER AREA ── */
+    .coming-soon{padding:4rem 1.2rem;text-align:center;border-top:1px solid var(--ash);max-width:1100px;margin:0 auto}
+    .coming-label{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:1rem}
+    .coming-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-dim)}
+
+    footer{padding:2.5rem 1.2rem;border-top:1px solid var(--ash);display:flex;flex-direction:column;align-items:center;gap:.8rem;text-align:center;max-width:1100px;margin:0 auto}
+    .footer-logo{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.22em;color:var(--gold-dim)}
+    .footer-verse{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:var(--text-dim)}
+    .footer-copy{font-size:.72rem;color:var(--text-dim)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ══ Tiny phones ≤ 380px ══ */
+    @media(max-width:380px){
+      .hero-title{font-size:3.2rem}
+      .hero-subtitle{font-size:1rem}
+      .audience-tag{font-size:.56rem;letter-spacing:.1em;padding:.45rem .8rem}
+      .audience-dot{display:none}
+      .cta-btn{font-size:.62rem;letter-spacing:.14em;padding:.9rem 1.4rem;width:100%;justify-content:center}
+      .card-title{font-size:1.45rem}
+      .how-num{font-size:2.4rem}
+    }
+
+    /* ══ TABLET 640px+ ══ */
+    @media(min-width:640px){
+      nav{padding:1.3rem 2rem}
+      .hero{padding:0 2rem}
+      .hero-title{font-size:5rem}
+      .hero-eyebrow{letter-spacing:.32em}
+      .hero-eyebrow::before,.hero-eyebrow::after{display:inline;margin:0 .6em;opacity:.5}
+      .intro{padding:7rem 2rem}
+      .intro-text{font-size:1.5rem}
+      .how-it-works{padding:0 2rem 6rem}
+      .how-grid{grid-template-columns:repeat(3,1fr)}
+      .modules-section{padding:4rem 2rem 7rem}
+      .modules-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+      .module-card{padding:2.5rem}
+      .module-card:hover::before{opacity:1}
+      .module-card:hover{background:var(--stone)}
+      footer{flex-direction:row;justify-content:space-between;padding:3rem 2rem}
+    }
+
+    /* ══ DESKTOP 900px+ ══ */
+    @media(min-width:900px){
+      nav{padding:1.5rem 3rem}
+      .nav-links{display:flex}
+      .nav-logo{font-size:.9rem;letter-spacing:.2em}
+      .hero-title{font-size:7rem}
+      .hero-subtitle{font-size:1.25rem}
+      .modules-title{font-size:3.2rem}
+      .modules-header{margin-bottom:4rem}
+      .coming-soon{padding:5rem 2rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">The Journey of Faith</a>
+  <ul class="nav-links">
+    <li><a href="#cara-kerja">Cara Kerja</a></li>
+    <li><a href="#modules">Modul</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rays"></div>
+  <div class="cross-icon">
+    <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <line x1="22" y1="5" x2="22" y2="39"/><line x1="9" y1="16" x2="35" y2="16"/>
+      <circle cx="22" cy="22" r="18" stroke-dasharray="3 4" opacity="0.3"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow">Kisah Alkitab yang Hidup</p>
+  <h1 class="hero-title">The Journey of<br><em>Faith</em></h1>
+  <p class="hero-subtitle">Bukan sekadar membaca. Rasakan, kenali dirimu, dan temukan makna yang berbicara langsung ke hidupmu.</p>
+  <div class="audience-tag">
+    <span class="audience-dot"></span>
+    Untuk kamu yang sedang mencari makna lebih dalam
+    <span class="audience-dot"></span>
+  </div>
+  <div class="hero-cta">
+    <a href="daud-goliat.html" class="cta-btn">
+      <span>Mulai Kisah Pertama</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <div class="hero-divider"></div>
+  <p class="scroll-hint">Gulir ke bawah</p>
+</section>
+
+<section class="intro">
+  <p class="section-label">Tentang Perjalanan Ini</p>
+  <p class="intro-text">
+    Setiap kisah Alkitab adalah cermin.<br>
+    Di sini, kamu tidak hanya membacanya—<br>
+    kamu <strong>masuk ke dalamnya</strong>, mengambil sikap,<br>
+    dan merefleksikannya bersama hidupmu sendiri.
+  </p>
+</section>
+
+<section class="how-it-works" id="cara-kerja">
+  <p class="section-label">Cara Kerja</p>
+  <div class="how-grid">
+    <div class="how-item">
+      <div class="how-num">01</div>
+      <div class="how-title">Masuk ke Cerita</div>
+      <p class="how-desc">Setiap kisah dibangun secara imersif—suasana, emosi, dan ketegangan yang membuatmu seolah benar-benar berada di sana.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">02</div>
+      <div class="how-title">Kenali Dirimu</div>
+      <p class="how-desc">Di titik-titik kunci, pilih respons yang paling mencerminkan dirimu hari ini. Tidak ada jawaban benar atau salah—hanya kejujuran.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">03</div>
+      <div class="how-title">Refleksi Pribadi</div>
+      <p class="how-desc">Di akhir, bawa pertanyaan yang muncul ke buku harianmu. Percakapan terpenting adalah yang kamu lakukan dengan dirimu sendiri.</p>
+    </div>
+  </div>
+</section>
+
+<section class="modules-section" id="modules">
+  <div class="modules-header">
+    <h2 class="modules-title">Kisah &amp; Modul</h2>
+    <div class="modules-line"></div>
+  </div>
+  <div class="modules-grid">
+
+    <a href="kej/kejadian-1.html" class="module-card active-module">
+      <p class="card-number">Kejadian 1</p>
+      <span class="card-tag">Perjanjian Lama</span>
+      <h3 class="card-title">Sebelum Ada Apa-Apa</h3>
+      <p class="card-theme">Siapa yang Berbicara di Dalam Gelap?</p>
+      <!-- <p class="card-desc">Daud bukan prajurit. Dia hanyalah gembala dengan sebuah umban. Namun di hadapan Goliat, dia melihat sesuatu yang tak dilihat siapapun—besarnya Tuhan yang menyertainya.</p> -->
+      <div class="card-meta">
+        <span class="card-time">⏱ 15 Menit · 2 Momen Refleksi</span>
+        <div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </a>
+
+    <a href="kej/kejadian-2.html" class="module-card active-module">
+      <p class="card-number">Kejadian 2</p><span class="card-tag">Perjanjian Lama</span>
+      <h3 class="card-title">Api di Tengah Malam</h3>
+      <p class="card-theme">Ketika Tuhan Terasa Diam</p>
+      <!-- <p class="card-desc">Elia melarikan diri ke padang gurun setelah kemenangan terbesarnya. Kisah tentang kejenuhan jiwa dan suara Tuhan yang pelan namun pasti.</p> -->
+      <div class="card-meta"><span class="card-time">⏱ 20 Menit · 3 Momen Refleksi</span><div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </a>
+
+    <a href="kej/kejadian-3a.html" class="module-card active-module">
+      <p class="card-number">Kejadian 3 - Part 1</p><span class="card-tag">Perjanjian Baru</span>
+      <h3 class="card-title">Badai di Danau Galilea</h3>
+      <p class="card-theme">Percaya di Tengah Kekacauan</p>
+      <!-- <p class="card-desc">Para murid berpengalaman menangkap ikan, namun badai ini berbeda. Di antara gelombang, ada seseorang yang tidur dengan tenang—dan itu mengubah segalanya.</p> -->
+      <div class="card-meta"><span class="card-time">⏱ 18 Menit · 2 Momen Refleksi</span><div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </a>
+
+    <a href="4.html" class="module-card active-module">
+      <p class="card-number">Modul 04</p><span class="card-tag">Perjanjian Lama</span>
+      <h3 class="card-title">Lembah Bayang-Bayang Maut</h3>
+      <p class="card-theme">Kesetiaan di Dalam Derita</p>
+      <p class="card-desc">Ayub kehilangan segalanya dalam satu hari. Teman-temannya datang bukan untuk menghibur melainkan menghakimi. Namun Ayub menolak melepaskan imannya.</p>
+      <div class="card-meta"><span class="card-time">⏱ 25 Menit · 4 Momen Refleksi</span><div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </a>
+
+    <a href="5.html" class="module-card active-module">
+      <p class="card-number">Modul 05</p><span class="card-tag">Perjanjian Baru</span>
+      <h3 class="card-title">Pulang Ke Rumah Bapa</h3>
+      <p class="card-theme">Kasih Yang Tak Bersyarat</p>
+      <p class="card-desc">Seorang anak yang pergi, menyia-nyiakan semua yang dimilikinya, kemudian bertanya dalam hati: apakah masih ada tempat untukku di rumah?</p>
+      <div class="card-meta"><span class="card-time">⏱ 20 Menit · 3 Momen Refleksi</span><div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </a>
+
+    <a href="6.html" class="module-card active-module">
+      <p class="card-number">Modul 06</p><span class="card-tag">Perjanjian Lama</span>
+      <h3 class="card-title">Mimpi di Sumur Gelap</h3>
+      <p class="card-theme">Ketika Pengkhianatan Jadi Pintu Berkat</p>
+      <p class="card-desc">Yusuf dibuang oleh saudara-saudaranya sendiri. Di dalam lubang itu, apakah janji Tuhan masih berlaku? Sebuah kisah tentang kesabaran dan penebusan.</p>
+      <div class="card-meta"><span class="card-time">⏱ 22 Menit · 3 Momen Refleksi</span><div class="card-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </a>
+  
+    <a href="7.html" class="module-card active-module">
+    <p class="card-number">Modul 07</p>
+    <span class="card-tag">Perjanjian Lama</span>
+    <h3 class="card-title">Taman yang Hilang</h3>
+    <p class="card-theme">Pilihan & Tanggung Jawab</p>
+    <p class="card-desc">Refleksi tentang kebebasan memilih dan konsekuensi yang harus dihadapi di ambang pintu Eden.</p>
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 3 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+  <a href="8.html" class="module-card active-module">
+    <p class="card-number">Modul 08</p>
+    <span class="card-tag">Perjanjian Lama</span>
+    <h3 class="card-title">Bahtera di Tengah Cemoohan</h3>
+    <p class="card-theme">Ketekunan & Visi</p>
+    <p class="card-desc">Membangun harapan di tengah dunia yang menertawakan imanmu. Sebuah kisah tentang ketaatan tanpa syarat.</p>
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 3 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+  <a href="9.html" class="module-card active-module">
+    <span class="locked-badge">Segera Hadir</span>
+    <p class="card-number">Modul 09</p>
+    <span class="card-tag">Perjanjian Lama</span>
+    <h3 class="card-title">Menuju Tanah Tak Dikenal</h3>
+    <p class="card-theme">Keberanian Melangkah</p>
+    <p class="card-desc">Meninggalkan zona nyaman demi sebuah janji yang belum terlihat. Perjalanan iman Abraham dimulai di sini.</p>
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 3 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+
+  <a href="qoheleth.html" class="module-card active-module">
+    <p class="card-number">Modul Khusus</p>
+    <span class="card-tag">Perjanjian Lama</span>
+    <h3 class="card-title">Mengejar Angin di Bawah Matahari</h3>
+    <p class="card-theme">Menghadapi Kesia-siaan & Batas Logika</p>
+    <!-- <p class="card-desc">Meninggalkan zona nyaman demi sebuah janji yang belum terlihat. Perjalanan iman Abraham dimulai di sini.</p> -->
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 3 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+
+  <a href="ayub-teodisi.html" class="module-card active-module">
+    <p class="card-number">Modul Khusus</p>
+    <span class="card-tag">Perjanjian Lama</span>
+    <h3 class="card-title">Gugatan kepada Sang Pencipta</h3>
+    <p class="card-theme">Ketika Logika Keadilan Bertemu Kenyataan</p>
+    <!-- <p class="card-desc">Meninggalkan zona nyaman demi sebuah janji yang belum terlihat. Perjalanan iman Abraham dimulai di sini.</p> -->
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 4 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+
+  <a href="karamazov.html" class="module-card active-module">
+    <p class="card-number">Modul Khusus</p>
+    <span class="card-tag">Sastra Dunia</span>
+    <h3 class="card-title">Tiket yang Dikembalikan</h3>
+    <p class="card-theme">Ivan Karamazov & Pernyataan Terakhir</p>
+    <!-- <p class="card-desc">Meninggalkan zona nyaman demi sebuah janji yang belum terlihat. Perjalanan iman Abraham dimulai di sini.</p> -->
+    <div class="card-meta">
+      <span class="card-time">⏱ 22 Menit · 4 Momen Refleksi</span>
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </a>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 10</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Tawa di Masa Tua</h3>
+  <p class="card-theme">Janji & Kemustahilan</p>
+  <p class="card-desc">Ketika logika berkata tidak mungkin, namun iman Sara membuktikan bahwa tidak ada yang mustahil bagi-Nya.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 11</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Gulat di Peniel</h3>
+  <p class="card-theme">Identitas Baru</p>
+  <p class="card-desc">Yakub bergulat dengan masa lalunya dan menemukan berkat di balik luka yang mengubah hidupnya selamanya.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+    <a href="weavers-index.html" class="module-card active-module">
+    <p class="card-number">Modul Khusus</p>
+    <span class="card-tag">Alegori Modern</span>
+    <h3 class="card-title">The Weaver's Silence</h3>
+    <p class="card-theme">Keheningan Sang Penenun</p>
+    <!-- <p class="card-desc">Meninggalkan zona nyaman demi sebuah janji yang belum terlihat. Perjalanan iman Abraham dimulai di sini.</p> -->
+    <div class="card-meta">
+      
+      <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+    </a>
+<!-- 
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 12</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Musa di Semak Berduri</h3>
+  <p class="card-theme">Menjawab Panggilan</p>
+  <p class="card-desc">Tuhan tidak memanggil yang cakap, Dia memampukan yang terpanggil. Sebuah refleksi tentang rasa percaya diri.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 13</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Paskah Pertama</h3>
+  <p class="card-theme">Ketaatan yang Genting</p>
+  <p class="card-desc">Di ambang kebebasan Mesir, sebuah tanda darah menjadi pemisah antara maut dan kehidupan.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 14</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Terjepit di Laut Teberau</h3>
+  <p class="card-theme">Jalan Keluar Ilahi</p>
+  <p class="card-desc">Ketika jalan di depan buntu dan musuh mendekat, diam dan melihat bagaimana Tuhan berperan dalam hidupmu.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 15</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Roti dari Langit</h3>
+  <p class="card-theme">Belajar Cukup</p>
+  <p class="card-desc">Manna di padang gurun mengajarkan kita tentang ketergantungan harian kepada penyediaan Tuhan.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 16</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Tembok Yerikho</h3>
+  <p class="card-theme">Kemenangan Iman</p>
+  <p class="card-desc">Bukan dengan senjata, melainkan dengan ketaatan. Menghancurkan penghalang besar dalam hidup melalui pujian.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 17</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Obor di Tangan Gideon</h3>
+  <p class="card-theme">Kekuatan dalam Kelemahan</p>
+  <p class="card-desc">Tuhan tidak butuh jumlah yang besar, Dia hanya butuh hati yang bersedia dipakai untuk memenangkan pertempuran.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 18</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Rambut & Rahasia Simson</h3>
+  <p class="card-theme">Godaan & Kekuatan</p>
+  <p class="card-desc">Kisah tentang potensi besar yang terancam oleh kompromi. Menjaga kekudusan di tengah daya tarik dunia.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 19</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Kesetiaan di Ladang Gandum</h3>
+  <p class="card-theme">Pengorbanan Rut</p>
+  <p class="card-desc">Kesetiaan seorang menantu yang membawa berkat tak terduga dalam silsilah penebusan.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 20</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Bisikan di Bait Suci</h3>
+  <p class="card-theme">Mendengar Suara-Nya</p>
+  <p class="card-desc">Samuel belajar peka terhadap panggilan Tuhan di tengah keheningan malam. Apakah kita masih mendengar-Nya?</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 21</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Persahabatan Melampaui Takhta</h3>
+  <p class="card-theme">Ketulusan Daud & Yonatan</p>
+  <p class="card-desc">Ketika kasih persahabatan lebih kuat daripada ambisi politik dan kekuasaan orang tua.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 22</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Tarian di Depan Tabut</h3>
+  <p class="card-theme">Ekspresi Penyembahan</p>
+  <p class="card-desc">Daud melepaskan jubah kebesarannya untuk menyembah Tuhan tanpa takut penilaian manusia.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 23</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Hikmat di Meja Pengadilan</h3>
+  <p class="card-theme">Kebijaksanaan Salomo</p>
+  <p class="card-desc">Meminta hati yang paham untuk menimbang yang benar dan yang salah di atas kekayaan duniawi.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 24</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Janda di Sarfat</h3>
+  <p class="card-theme">Memberi dari Kekurangan</p>
+  <p class="card-desc">Keajaiban tepung dan minyak yang tidak pernah habis karena sebuah langkah ketaatan yang radikal.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 25</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Naaman di Sungai Yordan</h3>
+  <p class="card-theme">Melepaskan Gengsi</p>
+  <p class="card-desc">Kesembuhan seringkali menuntut kita untuk menanggalkan harga diri dan melakukan hal yang tampak sederhana.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 26</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Tembok yang Dibangun Kembali</h3>
+  <p class="card-theme">Restorasi Nehemia</p>
+  <p class="card-desc">Membangun kembali reruntuhan dengan satu tangan memegang pedang dan tangan lain memegang alat bangunan.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 27</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Di Dalam Perut Ikan</h3>
+  <p class="card-theme">Kesempatan Kedua Yunus</p>
+  <p class="card-desc">Melarikan diri dari panggilan hanya membawa kita ke tempat yang gelap. Namun, selalu ada jalan pulang bagi hati yang bertobat.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 28</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Dapur Api yang Panas</h3>
+  <p class="card-theme">Keteguhan Iman</p>
+  <p class="card-desc">Tetap setia meski api di depan mata. "Sekalipun Tuhan tidak melepaskan kami, kami tetap tidak akan menyembah patungmu."</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 29</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Gua Singa</h3>
+  <p class="card-theme">Integritas Daniel</p>
+  <p class="card-desc">Doa yang tidak terhentikan oleh ancaman maut. Sebuah kisah tentang integritas di tengah budaya yang asing.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 30</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Ratu yang Mempertaruhkan Nyawa</h3>
+  <p class="card-theme">Keberanian Ester</p>
+  <p class="card-desc">"Kalau terpaksa aku mati, biarlah aku mati." Berdiri untuk kebenaran di waktu yang tepat dan tempat yang tepat.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 31</p>
+  <span class="card-tag">Perjanjian Lama</span>
+  <h3 class="card-title">Visi Lembah Tulang Kering</h3>
+  <p class="card-theme">Harapan yang Hidup</p>
+  <p class="card-desc">Melihat kehidupan di mana orang lain hanya melihat kematian. Nubuatan tentang pemulihan yang mustahil.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 32</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Palungan di Kandang Hina</h3>
+  <p class="card-theme">Allah yang Menjadi Kecil</p>
+  <p class="card-desc">Raja segala raja yang lahir bukan di istana, melainkan di tempat paling rendah untuk menjangkau semua orang.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 33</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Godaan di Padang Gurun</h3>
+  <p class="card-theme">Menang Melawan Keinginan</p>
+  <p class="card-desc">Menghadapi suara tipu daya dengan kebenaran Firman saat fisik berada di titik terlemah.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 34</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Pesta Pernikahan di Kana</h3>
+  <p class="card-theme">Kepedulian Yesus</p>
+  <p class="card-desc">Mujizat pertama yang menunjukkan bahwa Tuhan peduli bahkan pada detail kebahagiaan manusia.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 35</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Percakapan di Sumur Yakub</h3>
+  <p class="card-theme">Dahaga Jiwa</p>
+  <p class="card-desc">Seorang wanita yang mencari cinta di tempat yang salah dan menemukan Air Hidup yang sejati.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 36</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Atap yang Dibongkar</h3>
+  <p class="card-theme">Iman & Persahabatan</p>
+  <p class="card-desc">Ketika iman empat orang sahabat membawa kesembuhan fisik dan pengampunan dosa bagi satu orang lumpuh.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 37</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Sentuhan pada Jumbai Jubah</h3>
+  <p class="card-theme">Iman yang Berani</p>
+  <p class="card-desc">Sebuah sentuhan sederhana di tengah kerumunan yang melepaskan kuasa kesembuhan yang luar biasa.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+
+<div class="module-card locked">
+  <span class="locked-badge">Segera Hadir</span>
+  <p class="card-number">Modul 38</p>
+  <span class="card-tag">Perjanjian Baru</span>
+  <h3 class="card-title">Maria, Marta, & Pilihan</h3>
+  <p class="card-theme">Keseimbangan Hidup</p>
+  <p class="card-desc">Mencari tahu apa yang paling utama: sibuk melayani atau diam mendengarkan di kaki Guru.</p>
+  <div class="card-meta">
+    <div class="card-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke= -->
+  </div>
+</section>
+
+<div class="coming-soon">
+  <p class="coming-label">Perjalanan Berlanjut</p>
+  <p class="coming-text">Modul-modul baru akan terus hadir. Setiap kisah, satu undangan untuk bertumbuh.</p>
+</div>
+
+<footer>
+  <span class="footer-logo">The Journey of Faith</span>
+  <p class="footer-verse">"Firman-Mu adalah pelita bagi kakiku dan terang bagi jalanku." — Mazmur 119:105</p>
+  <span class="footer-copy">© 2026</span>
+</footer>
+
+<script>
+  const nb = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 60));
+  const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible') }), {threshold:.12});
+  document.querySelectorAll('.section-label,.intro-text,.modules-header,.how-grid').forEach(el => io.observe(el));
+  const ci = new IntersectionObserver(e => e.forEach((x,i) => { if(x.isIntersecting) setTimeout(()=>x.target.classList.add('visible'),i*100) }), {threshold:.08});
+  document.querySelectorAll('.module-card').forEach(el => ci.observe(el));
+</script>
+</body>
+</html>
